@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/chip-todo/precache-manifest.f6c2e4e76ef6bb7aafa4f1aaab6a139c.js"
+  "/chip-todo/precache-manifest.43b8f092b1d0c4fdddab076d375f7878.js"
 );
 
 workbox.clientsClaim();
