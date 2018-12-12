@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Items extends Component {
   createItems = item => {
     return (
-      <li key={item.key}>
+      <li key={item.key} onClick={() => this.props.deleteItem(item.key)}>
         {item.text}
       </li>
     );

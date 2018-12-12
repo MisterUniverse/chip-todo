@@ -15,6 +15,16 @@ class App extends Component {
     }
   }
 
+  deleteItem = key => {
+    const filteredItems = this.state.items.filter(item => {
+      return item.key !== key;
+    });
+    this.setState({
+      items: filteredItems
+    });
+    console.log("Item deleted!");
+  };
+
   handleInput = e => {
     const itemText = e.target.value;
     const currentItem = { text: itemText, key: Date.now() };
@@ -46,7 +56,7 @@ class App extends Component {
           handleInput={this.handleInput}
           currentItem={this.state.currentItem}
         />
-        <TodoItems data={this.state.items} />
+        <TodoItems data={this.state.items} deleteItem={this.deleteItem} />
       </div>
     );
   }
