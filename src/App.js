@@ -3,6 +3,7 @@ import TodoList from "./List";
 import TodoItems from "./Items";
 
 class App extends Component {
+  inputElement = React.createRef();
   constructor() {
     super();
     this.state = {
@@ -15,18 +16,36 @@ class App extends Component {
   }
 
   handleInput = e => {
-    console.log('Input handled!');
-  }
+    const itemText = e.target.value;
+    const currentItem = { text: itemText, key: Date.now() };
+    this.setState({
+      currentItem
+    });
+  };
 
   addItem = e => {
     e.preventDefault();
-    console.log('Item successfully added!');
-  }
+    const newItem = this.state.currentItem;
+    if (newItem.text !== "") {
+      const items = [...this.state.items, newItem];
+      console.log(newItem);
+      this.setState({
+        items: items,
+        currentItem: { text: "", key: "" }
+      });
+    }
+    console.log("Item successfully added!");
+  };
 
   render() {
     return (
       <div className="App">
-        <List addItem={this.addItem} />
+        <List
+          addItem={this.addItem}
+          inputElement={this.inputElement}
+          handleInput={this.handleInput}
+          currentItem={this.state.currentItem}
+        />
       </div>
     );
   }
