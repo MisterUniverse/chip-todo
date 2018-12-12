@@ -5,7 +5,7 @@ class List extends Component {
     return (
       <div className="todoListMain">
         <div className="header">
-          <form>
+          <form onSubmit={this.props.addItem}>
             <input
               placeholder="Enter Item"/>
             <button type="submit"> + </button>
